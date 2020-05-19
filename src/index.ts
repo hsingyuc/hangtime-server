@@ -7,6 +7,8 @@ import { Request, Response } from 'express';
 import { Routes } from './routes';
 import AuthController from './controller/AuthController';
 
+require( 'dotenv' ).config();
+
 const connectionOptions = {
 	type: 'mysql',
 	url: process.env.DATABASE_URL,
@@ -22,7 +24,7 @@ createConnection( connectionOptions as any ).then( async () => {
 	app.use( ( req, res, next ) => {
 		res.header( 'Access-Control-Allow-Credentials', 'true' );
 		// @todo This address should be changed to be dynamic.
-		res.header( 'Access-Control-Allow-Origin', 'http://localhost:3000' );
+		res.header( 'Access-Control-Allow-Origin', process.env.CLIENT_URL );
 		res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
 		next();
 	} );
