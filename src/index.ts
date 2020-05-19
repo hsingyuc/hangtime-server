@@ -7,7 +7,16 @@ import { Request, Response } from 'express';
 import { Routes } from './routes';
 import AuthController from './controller/AuthController';
 
-createConnection().then( async () => {
+const connectionOptions = {
+	type: 'mysql',
+	url: process.env.DATABASE_URL,
+	entities: [
+		`${__dirname}/entity/**/*.js`,
+	],
+	autoSchemaSync: true,
+};
+
+createConnection( connectionOptions ).then( async () => {
 	// create express app
 	const app = express();
 	app.use( ( req, res, next ) => {
