@@ -16,7 +16,7 @@ const connectionOptions = {
 	autoSchemaSync: true,
 };
 
-createConnection( connectionOptions ).then( async () => {
+createConnection( connectionOptions as any ).then( async () => {
 	// create express app
 	const app = express();
 	app.use( ( req, res, next ) => {
