@@ -19,6 +19,7 @@
       "body-parser": "^1.18.1",
       "cookie-parser": "^1.4.5",
       "cors": "^2.8.5",
+      "dotenv": "^8.2.0",
       "express": "^4.15.4",
       "jsonwebtoken": "^8.5.1",
       "mysql": "^2.14.1",
@@ -28,7 +29,7 @@
       "typescript": "3.3.3333"
    },
    "scripts": {
-      "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
+      "dev": "ts-node --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
       "start": "ts-node src/index.ts"
    }
 }
