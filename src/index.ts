@@ -5,18 +5,21 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import { Request, Response } from 'express';
 import { Routes } from './routes';
-import AuthController from './controller/AuthController';
 
 require( 'dotenv' ).config();
 
-const connectionOptions = {
-	type: 'mysql',
-	url: process.env.DATABASE_URL,
-	entities: [
-		`${__dirname}/entity/**/*.ts`,
-	],
-	autoSchemaSync: true,
-};
+const connectionOptions = process.env.DATABASE_URL
+	? {
+		type: 'mysql',
+		url: process.env.DATABASE_URL,
+		entities: [
+			`${__dirname}/entity/**/*.ts`,
+		],
+		autoSchemaSync: true,
+	}
+	: null;
+
+console.log(connectionOptions);
 
 createConnection( connectionOptions as any ).then( async () => {
 	// create express app
