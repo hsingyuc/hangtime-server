@@ -12,6 +12,7 @@ const connectionOptions = process.env.DATABASE_URL
 	? {
 		type: 'mysql',
 		url: process.env.DATABASE_URL,
+		database: process.env.DATABASE_URL.match( /(?!.*\/)(.*)/ )[1],
 		entities: [
 			`${__dirname}/entity/**/*.ts`,
 		],
@@ -19,7 +20,7 @@ const connectionOptions = process.env.DATABASE_URL
 	}
 	: null;
 
-console.log(connectionOptions);
+console.log( connectionOptions );
 
 createConnection( connectionOptions as any ).then( async () => {
 	// create express app
