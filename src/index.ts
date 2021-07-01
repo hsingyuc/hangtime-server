@@ -20,8 +20,6 @@ const connectionOptions = process.env.DATABASE_URL
 	}
 	: null;
 
-console.log( connectionOptions );
-
 createConnection( connectionOptions as any ).then( async () => {
 	// create express app
 	const app = express();
