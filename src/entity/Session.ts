@@ -5,8 +5,8 @@ import User from './User';
 
 export enum Type {
 	REPEATER = 'repeater',
-	MAXHANG = 'maxhang',
-	PINCH = 'pinch'
+	MAX_HANG = 'max-hang',
+	NO_HANG = 'no-hang'
 }
 
 export enum Edge {
